@@ -1,0 +1,73 @@
+<?xml version="1.0"?>
+<template
+    format="5"
+    revision="1"
+    name="KTJ Activity"
+    description="Creates a new activity of KTJ."
+    minApi="9"
+    minBuildApi="14">
+
+    <category value="Activity" />
+    <formfactor value="Mobile" />
+
+	<parameter
+        id="pageName"
+        name="Page Name"
+        type="string"
+        constraints="unique|nonempty"
+        default="Main"
+        help="请填写页面名,如填写 Main,会自动生成 MainActivity, MainViewModel 等文件" />
+
+    <parameter
+        id="activityClass"
+        name="Activity Name"
+        type="string"
+        constraints="class|unique|nonempty"
+        default="MainActivity"
+		suggest="${pageName}Activity"
+        help="The name of the activity class to create" />
+		
+	<parameter
+        id="pageMode"
+        name="Page mode"
+        type="enum"
+        default="default"
+        help="请选择页面模式 支持 Default 默认, RV 列表/分页 , 自定义分页" >
+        <option id="default">Default</option>
+        <option id="list">RecyclerViewPaged</option>
+		<option id="paged">Paged</option>
+    </parameter>
+
+    <parameter
+        id="layoutName"
+        name="Layout Name"
+        type="string"
+        constraints="layout|unique|nonempty"
+        suggest="${activityToLayout(activityClass)}"
+        default="activity_main"
+        help="The name of the layout to create for the activity" />
+
+	<parameter
+        id="viewModelClass"
+        name="ViewModel Name"
+        type="string"
+        constraints="class|unique|nonempty"
+        suggest="${pageName}ViewModel"
+        default="MainViewModel"
+        help="The name of the viewModel class to create." />
+
+    <parameter
+        id="packageName"
+        name="Package name"
+        type="string"
+        constraints="package"
+        default="com.mycompany.myapp" />
+
+    <thumbs>
+        <thumb>template_blank_activity.png</thumb>
+    </thumbs>
+
+    <globals file="globals.xml.ftl" />
+    <execute file="recipe.xml.ftl" />
+
+</template>
