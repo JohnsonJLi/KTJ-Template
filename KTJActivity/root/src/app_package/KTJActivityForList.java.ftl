@@ -1,20 +1,19 @@
 package ${packageName}.${pageName?lower_case}.ui;
 
 import android.os.Bundle;
-
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.johnson.core.activity.BaseListActivity;
 import ${packageName}.${pageName?lower_case}.vm.${viewModelClass};
 <#if dataTypeImport??>
 import ${dataReference};
 </#if>
-
 <#if applicationPackage??>
+import ${applicationPackage}.BR;
 import ${applicationPackage}.R;
 import ${applicationPackage}.databinding.Activity${pageName}Binding;
 <#else>
+import ${packageName}.BR;
 import ${packageName}.R;
 import ${packageName}.databinding.Activity${pageName}Binding;
 </#if>
@@ -47,6 +46,11 @@ public class ${activityClass} extends BaseListActivity<${viewModelClass}, ${data
     @Override
     protected RecyclerView recyclerView() {
         return null;
+    }
+
+    @Override
+    protected int bindingVariable() {
+        return BR.vm;
     }
 
 }

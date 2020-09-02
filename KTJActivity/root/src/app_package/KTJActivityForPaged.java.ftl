@@ -1,16 +1,17 @@
 package ${packageName}.${pageName?lower_case}.ui;
 
 import android.os.Bundle;
-
 import com.johnson.core.activity.BasePagedActivity;
 import ${packageName}.${pageName?lower_case}.vm.${viewModelClass};
 <#if dataTypeImport??>
 import ${dataReference};
 </#if>
 <#if applicationPackage??>
+import ${applicationPackage}.BR;
 import ${applicationPackage}.R;
 import ${applicationPackage}.databinding.Activity${pageName}Binding;
 <#else>
+import ${packageName}.BR;
 import ${packageName}.R;
 import ${packageName}.databinding.Activity${pageName}Binding;
 </#if>
@@ -33,6 +34,11 @@ public class ${activityClass} extends BasePagedActivity<${viewModelClass}, ${dat
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.${layoutName});
+    }
+
+    @Override
+    protected int bindingVariable() {
+        return BR.vm;
     }
 
 	@Override

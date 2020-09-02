@@ -2,7 +2,7 @@
 <template
     format="5"
     revision="1"
-    name="KTJ Activity"
+    name="KTJ Activity (VVM全家桶)"
     description="Creates a new activity of KTJ. 创建错误请及时 Ctrl+z 撤回"
     minApi="9"
     minBuildApi="14">

@@ -7,9 +7,11 @@ import ${escapeKotlinIdentifiers(packageName)}.${pageName?lower_case}.vm.${viewM
 import ${dataReference}
 </#if>
 <#if applicationPackage??>
+import ${applicationPackage}.BR
 import ${applicationPackage}.R
 import ${applicationPackage}.databinding.Activity${pageName}Binding
 <#else>
+import ${packageName}.BR
 import ${packageName}.R
 import ${packageName}.databinding.Activity${pageName}Binding
 </#if>
@@ -31,5 +33,7 @@ class ${activityClass} : BaseListActivity<${viewModelClass}, ${dataType}, Activi
     override fun recyclerViewAdapter() = TODO("返回 BaseQuickAdapter")
 
     override fun recyclerView() = TODO("返回 RecyclerView")
+
+    override fun bindingVariable() = BR.vm
 
 }

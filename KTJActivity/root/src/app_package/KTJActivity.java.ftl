@@ -1,10 +1,7 @@
 package ${packageName}.${pageName?lower_case}.ui;
 
 import android.os.Bundle;
-
 import com.johnson.core.activity.BaseActivity;
-
-
 <#if generateViewModel>
 import ${packageName}.${pageName?lower_case}.vm.${viewModelClass};
     <#if dataTypeImport??>
@@ -18,7 +15,6 @@ import ${packageName}.BR;
 <#else>
 import com.johnson.core.vm.NoViewModel;
 </#if>
-
 <#if applicationPackage??>
 import ${applicationPackage}.R;
 import ${applicationPackage}.databinding.Activity${pageName}Binding;

@@ -1,17 +1,17 @@
 package ${escapeKotlinIdentifiers(packageName)}.${pageName?lower_case}.ui
 
 import android.os.Bundle
-
 import com.johnson.core.activity.BasePagedActivity
 import ${escapeKotlinIdentifiers(packageName)}.${pageName?lower_case}.vm.${viewModelClass}
 <#if dataTypeImport??>
 import ${dataReference}
 </#if>
-
 <#if applicationPackage??>
+import ${applicationPackage}.BR
 import ${applicationPackage}.R
 import ${applicationPackage}.databinding.Activity${pageName}Binding
 <#else>
+import ${packageName}.BR
 import ${packageName}.R
 import ${packageName}.databinding.Activity${pageName}Binding
 </#if>
@@ -29,6 +29,8 @@ class ${activityClass} : BasePagedActivity<${viewModelClass}, ${dataType}, Activ
         super.onCreate(savedInstanceState)
 		setContentView(R.layout.${layoutName})
     }
+
+    override fun bindingVariable() = BR.vm
 
     override fun newData(list: List<${dataType}>?) {
         TODO("设置数据 使用时请修改 List<T> 类型")
