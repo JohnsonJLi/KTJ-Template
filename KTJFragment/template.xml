@@ -1,0 +1,97 @@
+<?xml version="1.0"?>
+<template
+    format="5"
+    revision="1"
+    name="KTJ Fragment (VVM全家桶)"
+    description="Creates a new fragment of KTJ. 创建错误请及时 Ctrl+z 撤回"
+    minApi="14"
+    minBuildApi="14">
+
+    <category value="Fragment" />
+    <formfactor value="Mobile" />
+
+	<parameter
+        id="pageName"
+        name="Page Name"
+        type="string"
+        constraints="unique|nonempty"
+        default="Main"
+        help="请填写页面名,如填写 Main,会自动生成 MainFragment, MainViewModel 等文件" />
+
+    <parameter
+        id="fragmentClass"
+        name="Fragment Name"
+        type="string"
+        constraints="class|unique|nonempty"
+        default="MainFragment"
+		suggest="${pageName}Fragment"
+        help="The name of the fragment class to create" />
+
+    <parameter
+        id="layoutName"
+        name="Layout Name"
+        type="string"
+        constraints="layout|unique|nonempty"
+        suggest="${fragmentToLayout(fragmentClass)}"
+        default="fragment_main"
+        help="The name of the layout to create for the fragment" />
+
+    <parameter
+        id="needConstructor"
+        name="Need Constructor Parameters"
+        type="boolean"
+        default="false"
+        help="需要构造函数参数" />
+
+    <parameter
+        id="generateViewModel"
+        name="Generate ViewModel File"
+        type="boolean"
+        default="true"
+        help="If true, a ViewModel file will be generated" />
+
+	<parameter
+        id="viewModelClass"
+        name="ViewModel Name"
+        type="string"
+        constraints="class|unique|nonempty"
+        suggest="${pageName}ViewModel"
+        default="MainViewModel"
+        visibility="generateViewModel"
+        help="The name of the viewModel class to create." />
+
+    <parameter
+        id="dataReference"
+        name="Data type reference"
+        type="string"
+        default="default"
+		visibility="generateViewModel"
+        help="Base中的泛型 D 主Event数据类型 : default(Object/Any) / 类名(后续自己导包) / 数据完整包名(目标右键->Copy Reference); 复杂对象请使用 default 后需自行修改类型" />
+
+    <parameter
+        id="pageMode"
+        name="Page mode"
+        type="enum"
+        default="default"
+        visibility="generateViewModel"
+        help="请选择页面模式 支持 Default 默认, RV 列表/分页 , 自定义分页" >
+        <option id="default">Default</option>
+        <option id="list">RecyclerViewPaged</option>
+        <option id="paged">Paged</option>
+    </parameter>
+
+    <parameter
+        id="packageName"
+        name="Package name"
+        type="string"
+        constraints="package"
+        default="com.mycompany.myapp" />
+
+    <thumbs>
+        <thumb>template_blank_fragment.png</thumb>
+    </thumbs>
+
+    <globals file="globals.xml.ftl" />
+    <execute file="recipe.xml.ftl" />
+
+</template>
