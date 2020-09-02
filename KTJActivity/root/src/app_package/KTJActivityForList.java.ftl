@@ -7,6 +7,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.johnson.core.activity.BaseListActivity;
 import ${packageName}.${pageName?lower_case}.vm.${viewModelClass};
+<#if dataTypeImport??>
+import ${dataReference};
+</#if>
 
 <#if applicationPackage??>
 import ${applicationPackage}.R;
@@ -26,7 +29,7 @@ import org.jetbrains.annotations.NotNull;
  * @date 	${.now?string("yyyy/MM/dd")}
  * @see 	BaseListActivity
  */
-public class ${activityClass} extends BaseListActivity<${viewModelClass}, Object, Activity${pageName}Binding> {
+public class ${activityClass} extends BaseListActivity<${viewModelClass}, ${dataType}, Activity${pageName}Binding> {
 	
 	@Override
     protected void onCreate(Bundle savedInstanceState) {

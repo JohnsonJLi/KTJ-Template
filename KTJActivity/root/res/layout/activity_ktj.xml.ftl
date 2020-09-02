@@ -4,9 +4,11 @@
 
     <data>
 
-		<variable
-            name="vm"
-            type="${packageName}.${pageName?lower_case}.vm.${viewModelClass}" />
+        <#if generateViewModel>
+            <variable
+                name="vm"
+                type="${packageName}.${pageName?lower_case}.vm.${viewModelClass}" />
+        </#if>
 
     </data>
 

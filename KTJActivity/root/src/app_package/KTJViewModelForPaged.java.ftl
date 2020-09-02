@@ -1,6 +1,9 @@
 package ${packageName}.${pageName?lower_case}.vm;
 
 import com.johnson.core.vm.BaseListViewModel;
+<#if dataTypeImport??>
+import ${dataReference};
+</#if>
 
 /**
  * description: ${viewModelClass}
@@ -9,7 +12,7 @@ import com.johnson.core.vm.BaseListViewModel;
  * @date 	${.now?string("yyyy/MM/dd")}
  * @see 	BaseListViewModel
  */
-public class ${viewModelClass} extends BaseListViewModel<Object> {
+public class ${viewModelClass} extends BaseListViewModel<${dataType}> {
 
     /**
      * 在此函数实现 数据加载

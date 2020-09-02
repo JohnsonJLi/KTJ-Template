@@ -4,6 +4,9 @@ import android.os.Bundle
 
 import com.johnson.core.activity.BasePagedActivity
 import ${escapeKotlinIdentifiers(packageName)}.${pageName?lower_case}.vm.${viewModelClass}
+<#if dataTypeImport??>
+import ${dataReference}
+</#if>
 
 <#if applicationPackage??>
 import ${applicationPackage}.R
@@ -20,18 +23,18 @@ import ${packageName}.databinding.Activity${pageName}Binding
  * @date 	${.now?string("yyyy/MM/dd")}
  * @see BasePagedActivity
  */
-class ${activityClass} : BasePagedActivity<${viewModelClass}, Any, Activity${pageName}Binding>() {
+class ${activityClass} : BasePagedActivity<${viewModelClass}, ${dataType}, Activity${pageName}Binding>() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 		setContentView(R.layout.${layoutName})
     }
 
-    override fun newData(list: List<Any>?) {
+    override fun newData(list: List<${dataType}>?) {
         TODO("设置数据 使用时请修改 List<T> 类型")
     }
 
-    override fun addData(list: List<Any>) {
+    override fun addData(list: List<${dataType}>) {
         TODO("添加数据 使用时请修改 List<T> 类型")
     }
 

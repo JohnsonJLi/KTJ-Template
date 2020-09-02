@@ -3,6 +3,9 @@ package ${escapeKotlinIdentifiers(packageName)}.${pageName?lower_case}.ui
 import android.os.Bundle
 import com.johnson.core.activity.BaseListActivity
 import ${escapeKotlinIdentifiers(packageName)}.${pageName?lower_case}.vm.${viewModelClass}
+<#if dataTypeImport??>
+import ${dataReference}
+</#if>
 <#if applicationPackage??>
 import ${applicationPackage}.R
 import ${applicationPackage}.databinding.Activity${pageName}Binding
@@ -18,7 +21,7 @@ import ${packageName}.databinding.Activity${pageName}Binding
  * @date 	${.now?string("yyyy/MM/dd")}
  * @see 	BaseListActivity
  */
-class ${activityClass} : BaseListActivity<${viewModelClass}, Any, Activity${pageName}Binding>() {
+class ${activityClass} : BaseListActivity<${viewModelClass}, ${dataType}, Activity${pageName}Binding>() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

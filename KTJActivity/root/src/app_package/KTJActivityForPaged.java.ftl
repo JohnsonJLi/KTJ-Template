@@ -4,6 +4,9 @@ import android.os.Bundle;
 
 import com.johnson.core.activity.BasePagedActivity;
 import ${packageName}.${pageName?lower_case}.vm.${viewModelClass};
+<#if dataTypeImport??>
+import ${dataReference};
+</#if>
 <#if applicationPackage??>
 import ${applicationPackage}.R;
 import ${applicationPackage}.databinding.Activity${pageName}Binding;
@@ -24,7 +27,7 @@ import java.util.List;
  * @date 	${.now?string("yyyy/MM/dd")}
  * @see 	BasePagedActivity
  */
-public class ${activityClass} extends BasePagedActivity<${viewModelClass}, Object, Activity${pageName}Binding> {
+public class ${activityClass} extends BasePagedActivity<${viewModelClass}, ${dataType}, Activity${pageName}Binding> {
 	
 	@Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,12 +36,12 @@ public class ${activityClass} extends BasePagedActivity<${viewModelClass}, Objec
     }
 
 	@Override
-    protected void newData(@Nullable List<?> list) {
+    protected void newData(@Nullable List<${dataType}> list) {
         // TODO("设置数据 使用时请修改 List<T> 类型")
     }
 
     @Override
-    protected void addData(@NotNull List<?> list) {
+    protected void addData(@NotNull List<${dataType}> list) {
         // TODO("添加数据 使用时请修改 List<T> 类型")
     }
 

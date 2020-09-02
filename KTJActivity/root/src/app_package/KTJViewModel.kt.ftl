@@ -1,6 +1,9 @@
 package ${escapeKotlinIdentifiers(packageName)}.${pageName?lower_case}.vm
 
 import com.johnson.core.vm.BaseViewModel
+<#if dataTypeImport??>
+import ${dataReference}
+</#if>
 
 /**
  * description: ${viewModelClass}
@@ -8,7 +11,7 @@ import com.johnson.core.vm.BaseViewModel
  * @author 	
  * @date 	${.now?string("yyyy/MM/dd")}
  */
-class ${viewModelClass} : BaseViewModel<Any>() {
+class ${viewModelClass} : BaseViewModel<${dataType}>() {
 
 	override fun initData() {
 	
